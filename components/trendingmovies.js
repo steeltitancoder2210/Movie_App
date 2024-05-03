@@ -6,8 +6,8 @@ var{width,height}=Dimensions.get('window');
 
 export default function TrendingMovies({ data }) {
     const navigation=useNavigation();
-    const handleClick=()=>{
-navigation.navigate("Movie",item);
+    const handleClick=(item)=>{
+navigation.navigate("movie",item);
     }
     return (
         <View style={{ marginBottom: 8 }}>
@@ -29,7 +29,7 @@ navigation.navigate("Movie",item);
 
 const MovieCard = ({ item,handleClick}) => {
     return (
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={()=>handleClick(item)}>
           <Image source={require('../assets/icon.png')}
           style={{
             width:width*0.6,

@@ -4,7 +4,7 @@ import React from 'react';
 import { styles } from "../Screens/themes";
 import { useNavigation } from '@react-navigation/native';
 var{width,height}=Dimensions.get('window');
-export default function MovieList({ title, data }) {
+export default function MovieList({ title, data,hideSeeAll }) {
     let movieName="pokemon"
     const navigation=useNavigation();
     return (
@@ -13,10 +13,14 @@ export default function MovieList({ title, data }) {
                 <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>
                     {title}
                 </Text>
-           
-            <TouchableOpacity>
+           {
+            !hideSeeAll &&(
+                <TouchableOpacity>
                 <Text style={styles.text}>See All</Text>
             </TouchableOpacity>
+            )
+           }
+           
             </View>
             <ScrollView
             horizontal
@@ -28,7 +32,7 @@ export default function MovieList({ title, data }) {
                     return (
                         <TouchableWithoutFeedback 
                          key={index}
-                         onPress={()=> navigation.navigate('movie',item)}
+                         onPress={()=> navigation.push('movie',item)}
                         >
                             <View style={{marginright:10, alignItems: 'center',padding:8}}>
                             <Image source={require('../assets/icon.png')}
