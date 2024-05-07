@@ -48,6 +48,7 @@ import React from "react";
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 
 export default function CastList({ cast,navigation }) {
+  const r=80;
   return (
     <View style={{ marginVertical: 12 }}>
       <Text style={{ color: "white", marginHorizontal: 10, marginBottom: 10 ,fontWeight:"bold",marginTop:10,fontSize:20}}>
@@ -69,9 +70,9 @@ export default function CastList({ cast,navigation }) {
                 <Image
                   source={require('../assets/icon.png')}
                   style={{
-                    width: 80,
-                    height: 70,
-                    borderRadius: 500,
+                    width: r,
+                    height: r,
+                    borderRadius: r/2,
                     
                   }}
                 />
