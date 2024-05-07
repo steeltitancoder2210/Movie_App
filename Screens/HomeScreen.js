@@ -8,7 +8,7 @@ import Trendingmovies from "../components/trendingmovies";
 import MovieList from "../components/movielist";
 import { useNavigation } from "@react-navigation/native";
 import Loading from "../components/Loading";
-import { fetchTopRatedMovies, fetchTrendingMovies } from "../ap/movieDb";
+import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from "../ap/movieDb";
 
 // import axios from "../api/api"
 export default function HomeScreen(){
@@ -19,12 +19,32 @@ export default function HomeScreen(){
   const navigation=useNavigation();
 useEffect(()=>{
 getTrendMovies();
+getUpcomingMovies();
+getTopMovies();
 },[])
 const getTrendMovies=async()=>{
+    const data=await fetchTrendingMovies();
+   
+    if(data&&data.results)
+        setTrending(data.results);
+    setLoading(false);
+    
+}
+const getTopMovies=async()=>{
     const data=await fetchTopRatedMovies();
-    console.log("bola",data);
-    console.log("cola")
-
+    
+    if(data&&data.results)
+        settoprated(data.results);
+    setLoading(false);
+    // trending =data;
+}
+const getUpcomingMovies=async()=>{
+    const data=await fetchUpcomingMovies();
+    
+    if(data&&data.results)
+        setUpcoming(data.results);
+    setLoading(false);
+    // trending =data;
 }
  
 return (

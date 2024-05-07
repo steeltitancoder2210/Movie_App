@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, TouchableWithoutFeedback,Dime
 import React from 'react';
 import { styles } from "../Screens/themes";
 import { useNavigation } from '@react-navigation/native';
+import { image185 } from '../ap/movieDb';
 var{width,height}=Dimensions.get('window');
 export default function MovieList({ title, data,hideSeeAll }) {
     let movieName="pokemon"
@@ -35,7 +36,7 @@ export default function MovieList({ title, data,hideSeeAll }) {
                          onPress={()=> navigation.push('movie',item)}
                         >
                             <View style={{marginright:10, alignItems: 'center',padding:8}}>
-                            <Image source={require('../assets/icon.png')}
+                            <Image source={{uri:image185(item.poster_path)}}
           style={{
             width:width*0.33,
             height:height*0.22,
