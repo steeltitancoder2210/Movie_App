@@ -17,7 +17,7 @@ export default function MovieList({ title, data,hideSeeAll }) {
            {
             !hideSeeAll &&(
                 <TouchableOpacity>
-                <Text style={styles.text}>See All</Text>
+                <Text   onPress={()=> navigation.navigate('Search')} style={styles.text}>See All</Text>
             </TouchableOpacity>
             )
            }
