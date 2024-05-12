@@ -12,9 +12,9 @@ import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from ".
 
 // import axios from "../api/api"
 export default function HomeScreen(){
-    const [trending,setTrending]=useState([1,2,3]);
-    const [upcoming,setUpcoming]=useState([1,2,3]);
-    const [toprated,settoprated]=useState([1,2,3]);
+    const [trending,setTrending]=useState([]);
+    const [upcoming,setUpcoming]=useState([]);
+    const [toprated,settoprated]=useState([]);
     const [loading,setLoading]=useState(false);
   const navigation=useNavigation();
 useEffect(()=>{

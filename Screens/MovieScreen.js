@@ -11,6 +11,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import CastList from '../components/cast';
 import MovieList from '../components/movielist';
 import Loading from '../components/Loading';
+import { fetchMovieDetail, fetchcredit, fetchsimilar, image500 } from '../ap/movieDb';
 
 const { width, height } = Dimensions.get('window');
 
@@ -19,23 +20,45 @@ export default function MovieScreen() {
   const { params: movie } = useRoute();
   const [loading,setLoading]=useState(false);
   const navigation = useNavigation();
-
+  const[movies,setmovie]=useState({});
+  
   // The cast array should contain objects with 'person' and 'character' keys
-  const [cast, setCast] = useState([
-    { person: 'John Wick', character: 'Wick' },
-    { person: 'Neo', character: 'The One' },
-    { person: 'Morpheus', character: 'Morpheus' },
-    { person: 'Trinity', character: 'Trinity' },
-  ]);
-  const [similarMovies, setSimilarMovies] = useState([1,2,3,4,5,6])
+  const [cast, setCast] = useState([]);
+  const [similarMovies, setSimilarMovies] = useState([])
   // Set a default movie name or get it from route params if available
   const movieName = movie?.name || 'Unknown Movie';
 
   useEffect(() => {
-    // Perform any initialization logic or API calls if necessary
-    console.log('Route params:', movie);
+   
+    setLoading(true);
+    getMovieDetails(movie.id);
+    getMovieCredits(movie.id);
+    getSimilarMovies(movie.id);
+    
   }, [movie]);
+const getMovieDetails=async id =>{
+  const data=await fetchMovieDetail(id);
+  // console.log("got ",data);
+  if(data)
+    setmovie(data);
+  setLoading(false);
+}
+const getMovieCredits=async id =>{
+  const data=await fetchcredit(id);
+  // console.log("got ",data);
+  if(data && data.cast)
 
+    setCast(data.cast);
+  // setLoading(false);
+}
+const getSimilarMovies=async id =>{
+  const data=await fetchsimilar(id);
+  // console.log("got ",data);
+  if(data && data.results)
+
+    setSimilarMovies(data.results);
+  // setLoading(false);
+}
   return (
 
     
@@ -69,7 +92,7 @@ export default function MovieScreen() {
        
           <View>
           <Image
-            source={require('../assets/icon.png')}
+            source={{uri:image500(movies?.poster_path)}}
             style={{ width: '100%', height: height * 0.55 }}
           />
           <LinearGradient
@@ -98,7 +121,7 @@ export default function MovieScreen() {
               fontWeight: 'bold',
             }}
           >
-            {movieName}
+            {movies?.title}
           </Text>
           <Text
             style={{
@@ -108,7 +131,10 @@ export default function MovieScreen() {
               marginTop: 10,
             }}
           >
-            Released . 2020 . 170 min
+            
+            
+              {movies?.status} . {movies?.release_date?.split('-')[0]} .{movies?.runtime} min
+            
           </Text>
           <View
             style={{
@@ -117,7 +143,11 @@ export default function MovieScreen() {
               padding: 5,
             }}
           >
-            <Text
+          {
+            movies?.genres?.map((genre,index)=>{
+              let dot=index+1!=movies.genres.length;
+              return (
+                <Text key={index}
               style={{
                 color: '#808080',
                 fontWeight: '600',
@@ -125,27 +155,15 @@ export default function MovieScreen() {
                 marginRight: 5,
               }}
             >
-              Action .
+              {genre?.name} {dot?".":null}
             </Text>
-            <Text
-              style={{
-                color: '#808080',
-                fontWeight: '600',
-                fontSize: 20,
-                marginRight: 5,
-              }}
-            >
-              Thriller .
-            </Text>
-            <Text
-              style={{
-                color: '#808080',
-                fontWeight: '600',
-                fontSize: 20,
-              }}
-            >
-              Adventure .
-            </Text>
+              )
+            }
+            
+          )
+          }
+           
+            
           </View>
           <Text
             style={{
@@ -154,14 +172,15 @@ export default function MovieScreen() {
               letterSpacing: 2,
             }}
           >
-            Sample movie description goes here. // You might want to fix the other text issue with the long URLhhhhhhhhhhhhhhhhh
-            jfhdtstyumkh
+           {
+            movies?.overview
+           }
           </Text>
         </View>
   
         {/* Correctly use the CastList component */}
         <CastList navigation ={navigation}cast={cast} />
-        <MovieList title="Similar Movies" hideSeeAll={true} data={similarMovies}/>
+      <MovieList title={"Similar Movies"} hideSeeAll={true} data={similarMovies}/>
       </ScrollView>
       )
       

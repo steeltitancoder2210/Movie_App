@@ -43,7 +43,9 @@ export default function MovieList({ title, data,hideSeeAll }) {
             borderRadius:10
           }} />
            <Text style={{color:"white",marginLeft:10}}>
-                                {movieName .length>14?movieName.slice(0,14)+'...':movieName}
+                                {
+                                item.title.length>14?item.title.slice(0,14)+'...':item.title
+                                }
                             </Text>
                             </View>
                            

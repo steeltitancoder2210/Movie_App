@@ -28,7 +28,7 @@ navigation.navigate("movie",item);
 }
 
 const MovieCard = ({ item,handleClick}) => {
-    console.log("hola",item.poster_path);
+    // console.log("hola",item.poster_path);
     return (
         <TouchableWithoutFeedback onPress={()=>handleClick(item)}>
           <Image 
