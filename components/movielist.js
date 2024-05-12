@@ -26,7 +26,7 @@ export default function MovieList({ title, data,hideSeeAll }) {
             <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{padding:15}}
+            contentContainerStyle={{padding:5}}
 
             >{
                 data.map((item,index)=>{
