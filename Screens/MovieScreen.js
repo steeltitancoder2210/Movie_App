@@ -11,6 +11,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import CastList from '../components/cast';
 import MovieList from '../components/movielist';
 import Loading from '../components/Loading';
+import PropTypes from 'prop-types';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 import { fetchMovieDetail, fetchcredit, fetchsimilar, image500 } from '../ap/movieDb';
 
 const { width, height } = Dimensions.get('window');

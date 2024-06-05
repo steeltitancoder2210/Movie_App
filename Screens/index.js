@@ -9,7 +9,8 @@ import MovieList from "../components/movielist";
 import { useNavigation } from "@react-navigation/native";
 import Loading from "../components/Loading";
 import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from "../ap/movieDb";
-
+import PropTypes from 'prop-types';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 // import axios from "../api/api"
 export default function HomeScreen(){
     const [trending,setTrending]=useState([]);
@@ -52,7 +53,8 @@ return (
        <SafeAreaView style={{marginBottom:10}}>
         <StatusBar style="light"/>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal : 7,marginTop:33 }}>
-            <Bars3CenterLeftIcon size="30" strokeWidth={2} color='white' />
+            <TouchableOpacity  >
+            <Bars3CenterLeftIcon size="30" strokeWidth={2} color='white' /></TouchableOpacity>
             <Text style={{color:"white" ,fontSize:25,fontWeight:"bold"}}>
                 <Text style={styles.text}>M</Text>
                 ovies
