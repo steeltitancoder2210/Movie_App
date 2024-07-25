@@ -1,58 +1,51 @@
 
-
 import React from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, Image } from "react-native";
 import { styles } from "./themes";
 import style from "./css";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from "@react-navigation/native";
 
-function Signup() {
+function m() {
     const navigation = useNavigation();
+    
     return (
         <View style={{ flex: 1, backgroundColor: '#0A0A0A' }}>
 
-            <View>
-                
-            </View>
+                <View style={style.logoContainer}>
+                <Image source={require("../assets/logo.jpeg")} style={style.logo}/>
+                  </View> 
             <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginHorizontal: 7, marginTop: 100 }}>
-                <Text style={{ color: "white", fontSize: 100, fontWeight: "bold" }}>
+                <Text style={{ color: "white", fontSize: 110, fontWeight: "bold" }}>
                     <Text style={styles.text}>M</Text>
                     ovies
                 </Text>
             </View>
-            <View style={{ marginTop: 30 }}>
-                <Text style={{ color: "white", fontWeight: "bold", fontSize: 35, marginLeft: 10, marginTop: 50 }}>Register !!!</Text>
-                <View style={style.action}>
-                    <FontAwesome name="user-o" color="#eab308" style={style.smallIcon} />
-                    <TextInput placeholder="Name" placeholderTextColor="white" style={style.textInput} />
-                </View>
-                <View style={style.action}>
-                    <FontAwesome name="envelope" color="#eab308" style={style.smallIcon} />
-                    <TextInput placeholder="Email" placeholderTextColor="white" style={style.textInput} secureTextEntry={true} />
-                </View>
-                <View style={style.action}>
-                    <FontAwesome name="mobile" color="#eab308" style={style.smallIcon} />
-                    <TextInput placeholder="Mobile No." placeholderTextColor="white" style={style.textInput} secureTextEntry={true} />
-                </View>
-                <View style={style.action}>
-                    <FontAwesome name="lock" color="#eab308" style={style.smallIcon} />
-                    <TextInput placeholder="Password" placeholderTextColor="white" style={style.textInput} secureTextEntry={true} />
-                </View>
-                
-            </View>
-            <TouchableOpacity style={style.inBut}>
+            
+            
+            
+            <TouchableOpacity 
+                style={{ 
+                    width: '90%',
+                    marginTop: 90,
+                    marginLeft: 20,
+                    backgroundColor: '#eab308',
+                    alignItems: 'center',
+                    justifyContent: "center",
+                    paddingHorizontal: 15,
+                    paddingVertical: 15,
+                    borderRadius: 50,
+                }} 
+                onPress={() => navigation.navigate("login")}
+            >
                 <View>
                     <Text style={style.textSign}>
-                      Register
+                        Get Started
                     </Text>
                 </View>
             </TouchableOpacity>
-           
-           
-            
         </View>
     );
 }
 
-export default Signup;
+export default m;
