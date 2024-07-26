@@ -9,7 +9,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors()); 
 
-const mongourl = "mongodb+srv://SPrakh0122:Prakh2210@cluster0.h1bss2n.mongodb.net/yourDatabaseName?retryWrites=true&w=majority";
+const mongourl = "mongodb+srv://email:password@cluster0.h1bss2n.mongodb.net/yourDatabaseName?retryWrites=true&w=majority";
 
 mongoose.connect(mongourl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to MongoDB"))
