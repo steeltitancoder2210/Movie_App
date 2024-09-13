@@ -8,7 +8,7 @@ import PersonScreen from '../Screens/PersonScreen';
 import SearchScreen from '../Screens/SearchScreen';
 import Login from '../Screens/login';
 import signup from '../Screens/signup';
-
+import Main from '../Screens/main';
 
 const Stack = createNativeStackNavigator(); 
 
@@ -16,6 +16,7 @@ export default function AppNavigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen name="main" component={Main} options={{ headerShown: false }} />
                 <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
                 <Stack.Screen name="signup" component={signup} options={{ headerShown: false }} />
                 <Stack.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }} />

@@ -15,9 +15,10 @@ const style=StyleSheet.create({
       logoContainer: {
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop:"20%"
       },
       logo: {
-        height: 260,
+        height: 360,
         width: 260,
         marginTop: 30,
       },
