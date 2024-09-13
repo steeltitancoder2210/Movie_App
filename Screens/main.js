@@ -6,7 +6,7 @@ import style from "./css";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from "@react-navigation/native";
 
-function m() {
+function M() {
     const navigation = useNavigation();
     
     return (
@@ -48,4 +48,4 @@ function m() {
     );
 }
 
-export default m;
+export default M;
