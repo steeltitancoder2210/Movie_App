@@ -34,7 +34,7 @@ Ensure you have the following installed:
 1. Clone the repository:
    ```sh
    git clone https://github.com/steeltitancoder2210/Movie_App.git
-   cd imdb-movie-app
+   cd Movie_App
    ```
 2. Install dependencies:
    ```sh
