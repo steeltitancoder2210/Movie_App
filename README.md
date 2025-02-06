@@ -33,7 +33,7 @@ Ensure you have the following installed:
 ### Steps to Run the Project
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/imdb-movie-app.git
+   git clone https://github.com/steeltitancoder2210/Movie_App.git
    cd imdb-movie-app
    ```
 2. Install dependencies:
